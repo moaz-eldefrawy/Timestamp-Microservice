@@ -6,7 +6,7 @@ var http = require("http"),
 
 
 const app = express();
-/*var mustacheExpress = require('mustache-express');
+var mustacheExpress = require('mustache-express');
 
 app.engine('mustache', mustacheExpress());
 app.set('view engine', 'mustache');
