@@ -67,7 +67,7 @@ app.set("views", path.join(__dirname, "views"));
 
 app.get('/', function(req, res){
   console.log("working");
-  res.render('homepage', {name: "moaz"});
+  res.end()
 });
 
 // respond not found to not wanted routes
@@ -75,4 +75,3 @@ app.use(function(req, res, next){
   res.status(404);
   res.type('txt').send('Not found');
 });
-
