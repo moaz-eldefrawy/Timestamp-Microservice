@@ -73,9 +73,13 @@ app.get('/', function(req, res){
 });
 
 app.get('*', function(req, res){
-    var url = req.url;
-    
-    res.end();
+  var url = req.url,
+      answer = {unix: 0, natural};
+  if(url.indexOf('%') !== -1)
+    res.end("date");
+
+  else
+    res.end("unix");
 })
 
 // respond not found to not wanted routes
