@@ -67,8 +67,16 @@ app.set("views", path.join(__dirname, "views"));
 
 app.get('/', function(req, res){
   console.log("working");
-  res.end()
+  res.sendFile(process.cwd() + '/views/index.html', function(){
+    res.end();
+  });
 });
+
+app.get('*', function(req, res){
+    var url = req.url;
+    
+    res.end();
+})
 
 // respond not found to not wanted routes
 app.use(function(req, res, next){
