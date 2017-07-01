@@ -73,18 +73,22 @@ app.get('/', function(req, res){
 });
 
 app.get('*', function(req, res){
-  var url = req.url,
+  var url = req.url.substring(1,req.url.length),
       answer = {unix: 0, natural: ""},
       unix, date;
-    
+  
   if(url.indexOf('%') !== -1){
-    date = decodeURIComponent(url).subStr(1,url.length);
-    answer.natural = date;
+    date = decodeURIComponent(url);
+    var datum = new Date(date);
+    unix =  datum.getTime()/1000;
   }
   else{
-    
+    unix= url
+    var dateTime = new Date(url);
+    date = dateTime.toISOString(); // Returns "2013-05-31T11:54:44.000Z"
   }
-
+  answer.natural = date;
+  answer.unix = unix;
   res.end(JSON.stringify(answer));
 })
 
