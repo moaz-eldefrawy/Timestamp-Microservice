@@ -33,11 +33,11 @@ app.route('/_api/package.json')
     });
   });
   
-app.route('/')
+/*app.route('/')
     .get(function(req, res) {
-		  res.sendFile(process.cwd() + '/views/homepage.pu');
+		  res.render(process.cwd() + '/views/homepage.pug');
     })
-
+*/
 // Respond not found to all the wrong routes
 app.use(function(req, res, next){
   res.status(404);
@@ -68,7 +68,7 @@ app.set("views", path.join(__dirname, "views"));
 
 app.get('*', (req, res) => {
   console.log("working");
-  res.render('homepage');
+  res.render('views/homepage');
 })
 
 
