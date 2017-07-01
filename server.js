@@ -35,7 +35,7 @@ app.route('/_api/package.json')
   
 app.route('/')
     .get(function(req, res) {
-		  res.sendFile(process.cwd() + '/views/index.html');
+		  res.sendFile(process.cwd() + '/views/homepage.pu');
     })
 
 // Respond not found to all the wrong routes
@@ -56,4 +56,19 @@ app.use(function(err, req, res, next) {
 app.listen(process.env.PORT, function () {
   console.log('Node.js listening ...');
 });
+
+var http = require("http"),
+    path = require('path'),
+    fs = require('fs'),
+    mustache = require("mustache"),
+    pug = require("pug");
+
+app.set('view engine', 'pug');
+app.set("views", path.join(__dirname, "views"));
+
+app.get('*', (req, res) => {
+  console.log("working");
+  res.render('homepage');
+})
+
 
