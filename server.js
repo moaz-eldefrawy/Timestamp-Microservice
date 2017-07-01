@@ -83,9 +83,9 @@ app.get('*', function(req, res){
     unix =  datum.getTime()/1000;
   }
   else{
-    unix= url
-    var dateTime = new Date( unix );
-    date = dateTime.toDateString().toString(); // Returns "2013-05-31T11:54:44.000Z"
+    unix= url;
+    var t = new Date( unix * 1000 );
+    date = t.toDateString();
   }
   answer.natural = date;
   answer.unix = unix;
