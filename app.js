@@ -2,17 +2,14 @@ var http = require("http"),
     express = require("express"),
     path = require('path'),
     fs = require('fs'),
-    mustache = require("mustache");
+    mustache = require("mustache"),
+    pug = require("pug");
 
 
 const app = express();
-var mustacheExpress = require('mustache-express');
+app.set('view engine', 'pug');
+app.set("views", path.join(__dirname, "views"));
 
-app.engine('mustache', mustacheExpress());
-app.set('view engine', 'mustache');
-app.set('views', __dirname + '/public');
-/*app.get('/', function(req,res){
-    res.sendFile( '' )
-})*/
+app.get('/', (req, res) =)
 
 app.listen(1010);
