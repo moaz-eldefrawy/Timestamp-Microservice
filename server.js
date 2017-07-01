@@ -74,7 +74,7 @@ app.get('/', function(req, res){
 
 app.get('*', function(req, res){
   var url = req.url.substring(1,req.url.length),
-      answer = {unix: 0, natural: ""},
+      answer = {},
       unix, date;
   
   if(url.indexOf('%') !== -1){
@@ -84,8 +84,8 @@ app.get('*', function(req, res){
   }
   else{
     unix= url
-    var dateTime = new Date(url);
-    date = dateTime.toISOString(); // Returns "2013-05-31T11:54:44.000Z"
+    var dateTime = new Date( unix );
+    date = dateTime.toDateString().toString(); // Returns "2013-05-31T11:54:44.000Z"
   }
   answer.natural = date;
   answer.unix = unix;
