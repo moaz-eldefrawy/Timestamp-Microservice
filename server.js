@@ -74,12 +74,18 @@ app.get('/', function(req, res){
 
 app.get('*', function(req, res){
   var url = req.url,
-      answer = {unix: 0, natural};
-  if(url.indexOf('%') !== -1)
-    res.end("date");
+      answer = {unix: 0, natural: ""},
+      unix, date;
+    
+  if(url.indexOf('%') !== -1){
+    date = decodeURIComponent(url).subStr(1,url.length);
+    answer.natural = date;
+  }
+  else{
+    
+  }
 
-  else
-    res.end("unix");
+  res.end(JSON.stringify(answer));
 })
 
 // respond not found to not wanted routes
