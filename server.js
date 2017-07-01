@@ -38,11 +38,9 @@ app.route('/_api/package.json')
 		  res.render(process.cwd() + '/views/homepage.pug');
     })
 */
+
 // Respond not found to all the wrong routes
-app.use(function(req, res, next){
-  res.status(404);
-  res.type('txt').send('Not found');
-});
+
 
 // Error Middleware
 app.use(function(err, req, res, next) {
@@ -66,9 +64,15 @@ var http = require("http"),
 app.set('view engine', 'pug');
 app.set("views", path.join(__dirname, "views"));
 
-app.get('*', (req, res) => {
-  console.log("working");
-  res.render('views/homepage');
-})
 
+app.get('/', function(req, res){
+  console.log("working");
+  res.render('homepage', {name: "moaz"});
+});
+
+// respond not found to not wanted routes
+app.use(function(req, res, next){
+  res.status(404);
+  res.type('txt').send('Not found');
+});
 
