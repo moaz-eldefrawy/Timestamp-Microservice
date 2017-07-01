@@ -10,6 +10,8 @@ const app = express();
 app.set('view engine', 'pug');
 app.set("views", path.join(__dirname, "views"));
 
-app.get('/', (req, res) =)
+app.get('/', (req, res) => {
+  res.render('homepage');
+})
 
-app.listen(1010);
+app.listen(8080);
